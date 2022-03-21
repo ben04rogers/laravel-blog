@@ -11,6 +11,9 @@ class Post extends Model
 
     protected $guarded = [];
 
+    // Load in category and author with each post to avoid N+1 queries
+    protected $with = ['category', 'author'];
+
     public function category() {
         return $this->belongsTo(Category::class);
     }
