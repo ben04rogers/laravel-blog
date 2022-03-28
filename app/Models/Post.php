@@ -14,6 +14,15 @@ class Post extends Model
     // Load in category and author with each post to avoid N+1 queries
     protected $with = ['category', 'author'];
 
+    public function scopeFilter($query, array $filters) {
+
+        $query->when($filters['search'] ?? false, function($query, $search) {
+            $query->where("title", "like", "%" . $search . "%")
+                ->orWhere("body", "like", "%" . $search . "%");
+        });
+    }
+
+
     public function category() {
         return $this->belongsTo(Category::class);
     }
