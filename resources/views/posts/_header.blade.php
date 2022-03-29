@@ -6,33 +6,7 @@
     <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
         <!--  Category -->
         <div class="relative lg:inline-flex rounded-xl">
-            <x-dropdown>
-                <x-slot name="trigger">
-                    <button
-                        class="py-2 pl-3 pr-9 text-sm font-semibold w-full lg:w-32 flex text-left lg:inline-flex bg-gray-100 rounded-xl relative">
-                        {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'Categories' }}
-
-                        <x-dropdown-arrow class="absolute pointer-events-none" style="right: 12px;"/>
-                    </button>
-                </x-slot>
-
-                <x-dropdown-item href="/" :active="request()->routeIs('home')">All</x-dropdown-item>
-
-                @foreach ($categories as $category)
-                    <x-dropdown-item
-                        href="/?category={{ $category->slug }}"
-                        :active="isset($currentCategory) && $currentCategory->is($category)">
-                        {{ $category->name }}</x-dropdown-item>
-
-{{--                    <a href="/categories/{{ $category->slug }}"--}}
-{{--                       class="--}}
-{{--                            block text-left px-3 text-sm leading-6 hover:bg-gray-300 focus:bg-gray-300--}}
-{{--                            {{ isset($currentCategory) && $currentCategory->id === $category->id ? 'bg-gray-300' : '' }}--}}
-{{--                           ">--}}
-{{--                        {{ ucwords($category->name) }}--}}
-{{--                    </a>--}}
-                @endforeach
-            </x-dropdown>
+            <x-category-dropdown></x-category-dropdown>
         </div>
 
         <!-- Other Filters -->
@@ -48,7 +22,7 @@
 
 {{--            <svg class="transform -rotate-90 absolute pointer-events-none" style="right: 12px;" width="22"--}}
 {{--                 height="22" viewBox="0 0 22 22">--}}
-{{--                <g fill="none" fill-rule="evenodd">--}}
+{{--                <g fill="none" fill-rule="evenodd">--}} 
 {{--                    <path stroke="#000" stroke-opacity=".012" stroke-width=".5" d="M21 1v20.16H.84V1z">--}}
 {{--                    </path>--}}
 {{--                    <path fill="#222"--}}
