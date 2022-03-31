@@ -7,7 +7,14 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
+
+    // Only users not logged in can view register page
+    public function __construct() {
+        $this->middleware(["guest"]);
+    }
+
     public function create() {
+
         return view('register.create');
     }
 
@@ -21,7 +28,10 @@ class RegisterController extends Controller
             'password' => 'required|min:6|max:255'
         ]);
 
-        User::create($attributes);
+        $user = User::create($attributes);
+
+        // Log in user
+        auth()->login($user);
 
         return redirect("/")->with("success", "Your account has been created!");
     }
