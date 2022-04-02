@@ -51,6 +51,15 @@
                         {!! $post->body !!}
                     </div>
                 </div>
+
+                <section>
+                    <article class="flex">
+                        <div>
+
+                        </div>
+                        <div></div>
+                    </article>
+                </section>
             </article>
         </main>
     </section>
