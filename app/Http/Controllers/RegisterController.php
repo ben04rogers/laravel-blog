@@ -7,12 +7,6 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-
-    // Only users not logged in can view register page
-    public function __construct() {
-        $this->middleware(["guest"]);
-    }
-
     public function create() {
 
         return view('register.create');
