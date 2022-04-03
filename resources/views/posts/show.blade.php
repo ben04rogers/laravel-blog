@@ -54,8 +54,9 @@
 
                 <section class="col-span-8 col-start-5 mt-10 space-y-6">
 
+                    @auth
                     <x-panel>
-                        <form action="#" method="POST">
+                        <form action="/posts/{{ $post->slug }}/comments" method="POST">
                             @csrf
 
                             <header class="flex items-center">
@@ -63,13 +64,18 @@
                                 <h2 class="ml-4">Want to participate?</h2>
                             </header>
 
-                            <textarea id="" cols="30" rows="5" class="w-full p-3 mt-10 rounded text-sm focus:ring focus:outline-none" placeholder="Quick, Think of something to say!"></textarea>
+                            <textarea name="body" id="" cols="30" rows="5" class="w-full p-3 mt-10 rounded text-sm focus:ring focus:outline-none" placeholder="Quick, Think of something to say!"></textarea>
 
                             <div class="flex justify-end border-t border-gray-200 mt-3">
                                 <button type="submit" class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 rounded-2xl hover:bg-blue-700 mt-3">Post</button>
                             </div>
                         </form>
                     </x-panel>
+                    @else
+                        <p>
+                            <a href="/login" class="hover:underline text-blue-500">Login to leave a comment</a>
+                        </p>
+                    @endauth
 
                     @foreach ($post->comments as $comment)
                        <x-post-comment :comment="$comment"/>
