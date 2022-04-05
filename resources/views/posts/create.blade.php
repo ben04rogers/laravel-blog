@@ -1,3 +1,7 @@
+@push('child-scripts')
+    <script type="text/javascript" src="{{ URL::asset('js/postform.js') }}"></script>
+@endpush
+
 <x-layout>
     <section class="px-6 py-8">
         <x-panel class="max-w-sm mx-auto">
@@ -14,7 +18,7 @@
 
                 <div class="mb-6">
                     <label for="slug" class="block mb-2 uppercase font-bold text-xs text-gray-700">Slug</label>
-                    <input type="text" name="slug" id="title" class="border border-gray-400 p-2 w-full" value="{{ old("slug") }}" required>
+                    <input type="text" name="slug" id="slug" class="border border-gray-400 p-2 w-full" value="{{ old("slug") }}" required>
                     @error('slug')
                     {{ $message }}
                     @enderror

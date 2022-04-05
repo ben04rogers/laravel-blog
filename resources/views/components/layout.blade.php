@@ -88,4 +88,6 @@
         <p>{{ session("success") }}</p>
     </div>
 @endif
+
+@stack('child-scripts')
 </body>
