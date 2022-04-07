@@ -29,20 +29,25 @@ class PostController extends Controller
     }
 
     public function store() {
+
+        $path = request()->file('thumbnail')->store('thumbnails');
+
+        return "Done";
+
         // the last rule checks if category_id is actually in the categories table
         // in the id column
-        $attributes = request()->validate([
-            'title' => 'required',
-            'slug' => ['required', Rule::unique('posts', 'slug')],
-            'excerpt' => 'required',
-            'body' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')]
-        ]);
-
-        $attributes['user_id'] = auth()->id();
-
-        Post::create($attributes);
-
-        return redirect("/");
+//        $attributes = request()->validate([
+//            'title' => 'required',
+//            'slug' => ['required', Rule::unique('posts', 'slug')],
+//            'excerpt' => 'required',
+//            'body' => 'required',
+//            'category_id' => ['required', Rule::exists('categories', 'id')]
+//        ]);
+//
+//        $attributes['user_id'] = auth()->id();
+//
+//        Post::create($attributes);
+//
+//        return redirect("/");
     }
 }
