@@ -8,11 +8,20 @@
                 @csrf
 
                 <div class="mb-6">
-                    <label class="black mb-2 uppercase font-bold text-xs text-gray-700" for="email">
+                    <label class="black mb-2 uppercase font-bold text-xs text-gray-700"
+                           for="email"
+                           autocomplete="username"
+                    >
                         Email
                     </label>
 
-                    <input type="email" name="email" class="border border-gray-400 p-2 w-full" id="email" value="{{ old('email') }}" required>
+                    <input type="email"
+                           name="email"
+                           class="border border-gray-400 p-2 w-full"
+                           id="email"
+                           value="{{ old('email') }}"
+                           required
+                           autocomplete="password">
 
                     @error("email")
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

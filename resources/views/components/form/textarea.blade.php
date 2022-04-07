@@ -2,7 +2,7 @@
 <div class="mb-6">
    <x-form.label name="{{ $name  }}" />
 
-    <textarea name="{{ $name }}" id="{{ $name }}" class="border border-gray-400 p-2 w-full" required>
+    <textarea name="{{ $name }}" id="{{ $name }}" class="border border-gray-200 p-2 w-full rounded" required>
            {{ old($name) }}
     </textarea>
 
